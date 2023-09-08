@@ -7,6 +7,7 @@ class MainSection extends Component {
     isLoading: true,
     hasError: false,
     movies: [],
+    errorMsg: "",
   };
   fetchMovies = async () => {
     this.setState({ isLoading: true });
@@ -16,22 +17,21 @@ class MainSection extends Component {
       const searchUrl = "&s=" + seriesName;
       const fetchUrl = apiUrl + searchUrl;
       const re = await fetch(fetchUrl);
-      if (re.ok) {
-        const allMovies = await re.json();
-        const movies = [];
-        if (allMovies.Search) {
-          const moviesFound = allMovies.Search.length;
-          console.log(moviesFound);
-          for (let i = 0; i < (moviesFound < 6 ? moviesFound : 6); i++) {
-            movies.push(allMovies.Search[i]);
-          }
-        }
-        this.setState({ movies });
-      } else {
-        this.setState({ hasError: true });
+      if (!re.ok) {
+        throw new Error("resp not ok " + re.status);
       }
+      const allMovies = await re.json();
+      const movies = [];
+      if (allMovies.Search) {
+        const moviesFound = allMovies.Search.length;
+        console.log(moviesFound);
+        for (let i = 0; i < (moviesFound < 6 ? moviesFound : 6); i++) {
+          movies.push(allMovies.Search[i]);
+        }
+      }
+      this.setState({ movies });
     } catch (error) {
-      this.setState({ hasError: true });
+      this.setState({ hasError: true, errorMsg: error.message });
       console.log(error);
     } finally {
       this.setState({ isLoading: false });
@@ -48,7 +48,7 @@ class MainSection extends Component {
         {/* Usare Alert qui mi da un errore per qualche motivo! */}
         {/* {this.state.hasError && <Alert variant="danger">Fetch error</Alert>} */}
         {/* --------------------------------------------------------------------------- */}
-        {this.state.hasError && <p>Fetch error</p>}
+        {this.state.hasError && (this.state.errorMsg ? <p>{this.state.errorMsg}</p> : <p>Fetch error</p>)}
         {this.state.isLoading && <Spinner animation="border" style={{ color: "#E50914" }} />}
         {this.state.movies.length === 0 && !this.state.hasError && !this.state.isLoading && <p>No movies found.</p>}
         <Container fluid>
