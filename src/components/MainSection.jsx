@@ -57,7 +57,7 @@ class MainSection extends Component {
               return (
                 <div className={"col mb-2 px-1 d-flex"} key={movie.imdbID}>
                   {movie.Poster !== "N/A" ? (
-                    <img className="img-fluid object-fit-cover" src={movie.Poster} alt="movie picture" />
+                    <img className="img-fluid object-fit-cover" src={movie.Poster} alt="movie poster" />
                   ) : (
                     <p className="h6 my-auto ">{movie.Title}</p>
                   )}
