@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Container, Spinner } from "react-bootstrap";
-import { Alert } from "bootstrap";
 
 class MainSection extends Component {
   state = {
@@ -10,7 +9,6 @@ class MainSection extends Component {
     errorMsg: "",
   };
   fetchMovies = async () => {
-    this.setState({ isLoading: true });
     try {
       const seriesName = this.props.seriesName;
       const apiUrl = "http://www.omdbapi.com/?apikey=7cf04ae9&type=movie";
@@ -24,7 +22,6 @@ class MainSection extends Component {
       const movies = [];
       if (allMovies.Search) {
         const moviesFound = allMovies.Search.length;
-        console.log(moviesFound);
         for (let i = 0; i < (moviesFound < 6 ? moviesFound : 6); i++) {
           movies.push(allMovies.Search[i]);
         }
