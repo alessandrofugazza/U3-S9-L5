@@ -5,7 +5,9 @@ body {
 
 h2,
 h4,
-footer {
+footer,
+section p,
+.h6.my-auto {
   color: #f5f5f1;
 }
 
