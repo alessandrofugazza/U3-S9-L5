@@ -25,8 +25,8 @@ class MainSection extends Component {
         for (let i = 0; i < (moviesFound < 6 ? moviesFound : 6); i++) {
           movies.push(allMovies.Search[i]);
         }
+        this.setState({ movies });
       }
-      this.setState({ movies });
     } catch (error) {
       this.setState({ hasError: true, errorMsg: error.message });
       console.log(error);
