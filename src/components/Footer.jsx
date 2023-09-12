@@ -1,19 +1,19 @@
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
 const MyFooter = () => (
   <footer>
     <Container>
-      <div className="row text-center mt-5">
-        <div className="col-6 offset-3 gx-0">
-          <div className="row">
+      <Row className="text-center mt-5">
+        <Col xs={{ span: 6, offset: 3 }} className="gx-0">
+          <Row>
             <div className="col col-12 text-start mb-2">
               <i className="fa fa-facebook footer-icon"></i>
               <i className="fa fa-instagram footer-icon"></i>
               <i className="fa fa-twitter footer-icon"></i>
               <i className="fa fa-youtube footer-icon"></i>
             </div>
-          </div>
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-4">
+          </Row>
+          <Row className=" row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-4">
             <div className="col ">
               <div className="row">
                 <div className="col col-12 footer-links">
@@ -103,19 +103,19 @@ const MyFooter = () => (
                 </div>
               </div>
             </div>
-          </div>
-          <div className="row ">
+          </Row>
+          <Row>
             <div className="col col-12 text-start mb-2">
               <button type="button" className="btn btn-sm footer-button rounded-0 mt-3">
                 Service Code
               </button>
             </div>
-          </div>
-          <div className="row">
+          </Row>
+          <Row>
             <div className="col col-12 text-start mb-2 mt-2 copyright">© 1997-2022 Netflix, Inc.</div>
-          </div>
-        </div>
-      </div>
+          </Row>
+        </Col>
+      </Row>
     </Container>
   </footer>
 );
