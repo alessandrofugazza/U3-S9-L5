@@ -4,7 +4,7 @@ const MyFooter = () => (
   <footer>
     <Container>
       <Row className="text-center mt-5">
-        <Col xs={{ span: 6, offset: 3 }} className="gx-0">
+        <Col xs={{ span: 6, offset: 3 }}>
           <Row>
             <div className="col col-12 text-start mb-2">
               <i className="fa fa-facebook footer-icon"></i>
@@ -13,8 +13,8 @@ const MyFooter = () => (
               <i className="fa fa-youtube footer-icon"></i>
             </div>
           </Row>
-          <Row className=" row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-4">
-            <div className="col ">
+          <Row className="row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-4">
+            <div className="col">
               <div className="row">
                 <div className="col col-12 footer-links">
                   <p>
